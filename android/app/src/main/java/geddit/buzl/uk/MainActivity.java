@@ -4,7 +4,16 @@ import android.content.Context;
 import java.io.File;
 import java.util.Arrays;
 
-public class MainActivity extends BridgeActivity {}
+public class MainActivity extends BridgeActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // Manage cache size when the activity is created
+        CacheUtils.manageCacheSize(this);
+    }
+}
 
 class CacheUtils {
     private static final long MAX_CACHE_SIZE = 100 * 1024 * 1024; // 100MB
